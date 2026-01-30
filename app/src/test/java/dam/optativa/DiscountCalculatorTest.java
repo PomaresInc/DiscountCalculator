@@ -1,48 +1,37 @@
+package dam.optativa;
+
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import dam.optativa.DiscountCalculator;
 
 public class DiscountCalculatorTest {
     
-}
-
-public class DiscountCalculatorTest {
-    
-    private DiscountCalculator calculator = new DiscountCalculator();
-    
     @Test
-    public void testNegativePriceStudent() {
-        double result = calculator.calcular(-100, true);
-        assertEquals(-80, result, 0.01);
+    public void testCalcularWithNegativePrice() {
+        DiscountCalculator calculator = new DiscountCalculator();
+        assertEquals(0, calculator.calcular(-10, false), 0);
     }
     
     @Test
-    public void testNegativePriceNonStudent() {
-        double result = calculator.calcular(-100, false);
-        assertEquals(-95, result, 0.01);
+    public void testCalcularWithZeroPrice() {
+        DiscountCalculator calculator = new DiscountCalculator();
+        assertEquals(0, calculator.calcular(0, false), 0);
     }
     
     @Test
-    public void testPositivePrice() {
-        double result = calculator.calcular(100, true);
-        assertEquals(0, result, 0.01);
+    public void testCalcularStudentDiscount() {
+        DiscountCalculator calculator = new DiscountCalculator();
+        assertEquals(80, calculator.calcular(100, true), 0);
     }
     
     @Test
-    public void testZeroPrice() {
-        double result = calculator.calcular(0, true);
-        assertEquals(0, result, 0.01);
+    public void testCalcularRegularDiscount() {
+        DiscountCalculator calculator = new DiscountCalculator();
+        assertEquals(95, calculator.calcular(100, false), 0);
     }
     
     @Test
-    public void testNegativePriceDecimalStudent() {
-        double result = calculator.calcular(-50.5, true);
-        assertEquals(-40.4, result, 0.01);
-    }
-    
-    @Test
-    public void testNegativePriceDecimalNonStudent() {
-        double result = calculator.calcular(-50.5, false);
-        assertEquals(-47.975, result, 0.01);
+    public void testCalcularStudentDiscountWithDecimal() {
+        DiscountCalculator calculator = new DiscountCalculator();
+        assertEquals(16.4, calculator.calcular(20.5, true), 0.1);
     }
 }
