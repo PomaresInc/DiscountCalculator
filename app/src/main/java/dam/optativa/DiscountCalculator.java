@@ -7,10 +7,9 @@ public class DiscountCalculator {
         }else{
             if (isStudent == true){
                 return price * 0.8;
-            }else if(isStudent == false){ {
-                    return price * 0.95;
+            }else{ 
+                return price * 0.95;
                 }
             }
         }
     }
-}
